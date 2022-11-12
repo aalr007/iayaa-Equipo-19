@@ -1,0 +1,114 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPbf+WbeIcTFuzeDHg4bH26",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/aalr007/iayaa-Equipo-19/blob/main/Actividad10/.Actividad%20Semana%209%3A%20ResumenTaxonom%C3%ADa%20de%20M%C3%A9tricas%20de%20Clasificaci%C3%B3n%20\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Maestría en Inteligencia Artificial Aplicada\n",
+        "**Curso: Inteligencia Artificial y Aprendizaje Automático**\n",
+        "\n",
+        "Tecnológico de Monterrey\n",
+        "\n",
+        "\n",
+        "\n",
+        "Prof Luis Eduardo Falcón Morales\n",
+        "\n",
+        "Semana 9 actividad 10: Taxonomía de Métricas de Clasificación\n",
+        "\n",
+        "\n",
+        "\n",
+        "    •\tAurelio Antonio Lozano Rabago A01081266\n",
+        "\n",
+        "    •\tJosias Ruiz Peña A00968460\n",
+        "\n",
+        "    •\tDavid González A01794025\n",
+        "\n",
+        "    •\tJerson David Pérez Contreras A01793810\n",
+        "\n",
+        "    •\tJose Alberto Mtanous Treviño A00169781\n"
+      ],
+      "metadata": {
+        "id": "lSMfnhJKUDuL"
+      }
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "#Resumen: Comparación experimental del desempeño de métricas para clasificación\n",
+        "\n",
+        "Las métricas de desempeño en clasificación son fundamentales para evaluar la calidad de los métodos de aprendizaje y los modelos generados, se analizaron 18 métricas de desempeño con la finalidad de ayudar a elegir la mas adecuada (o mas adecuadas) para cada aplicación.\n",
+        "\n",
+        "**Introducción**\n",
+        "\n",
+        "La correcta evaluación de modelos de aprendizaje automático es muy importante en temas de reconocimiento de patrones, esta evaluación puede apoyarse en 3 grupos de métricas:\n",
+        "\n",
+        ">•\tMétricas basadas en un umbral y entendimiento cualitativo del error: Se usan cuando se pretende minimizar el número de errores en un modelo\n",
+        "\n",
+        ">•\tMétricas basadas en entendimiento probabilístico del error: son útiles especialmente cuando se quiere evaluar la confiabilidad de los clasificadores\n",
+        "\n",
+        ">•\tMétricas basadas en que tan bien un modelo clasifica los ejemplos: se usan para seleccionar las mejores n instancias de un set de datos para una buena separación de clases.\n",
+        "\n",
+        "**Trabajos relacionados.**\n",
+        "\n",
+        "Hay varios estudios que muestran que, dependiendo las métricas usadas, se obtienen un mejor modelo. El propósito de este estudio es analizar que familias de algoritmos se comportan mejor según la familia de métricas a usar.\n",
+        "\n",
+        "**Métricas**\n",
+        "\n",
+        "Algunas ocasiones lo más complicado es entender la diferencia entre una buena \n",
+        "clasificación y probabilidad.\n",
+        "\n",
+        ">•\tUmbral del error (cualitativas): Acc, MAvA, MFM, MAvG, KapS\n",
+        "\n",
+        ">•\tClasificación (probabilísticas): AUNU, AUNP, AU1U, AU1P, \n",
+        "\n",
+        ">•\tProbabilidad: SAUC, PAUC, MAPR, MPR, MAE, MSE, LogLoss, CalL, CalB.\n",
+        "\n",
+        "**Metodología**\n",
+        "\n",
+        "Se usaron 6 algoritmos de aprendizaje automático, con 30 sets de datos evaluados usando validación cruzada de 20x5, produciendo 18,000 resultados en total. se construyó matriz de correlación de Pearson para medir la relación entre métricas y dendrogramas para visualizar los datos.\n",
+        "\n",
+        "**Análisis de resultados**\n",
+        "\n",
+        "Hay una relación cercana entre: 1- métricas cualitativas; 2- AUC; 3- MPR, MAE, PAUC, MAPR; quedando aislados MSE; LogL; CalL y CalB. La correlación baja en sets de datos desbalanceados, generado incluso diferencias entre métricas de umbral del error donde en sets de datos balanceados no las había. Los resultados entre sets de datos pequeños y grandes también afectaron la correlación. \n",
+        "\n",
+        "**Análisis de sensibilidad** \n",
+        "\n",
+        "Se realizaron mas experimentos para entender mejor la relación entre las métricas y la habilidad de encontrar errores, añadiendo ruido a las clases, a las probabilidades, clasificaciones y a la frecuencia de las clases a 2 modelos controlados. Para ruido en clases es mejor usar métricas cualitativas; para ruido probabilístico es mejor usar AUC y MSE. Con ruido de clasificación mostraron mejor desempeño SAUC, PAUC, MSE, MPR, MAPR, MAE, CalL y AUC. Finalmente con ruido de frecuencia de clases MAvA y MAvG, MPR/MAE, LogL, CalL y MSE son robustas.\n",
+        "\n",
+        "**Discusión**\n",
+        "\n",
+        "Métricas cualitativas son mejores cuando el ruido esta presente en el dataset, pero son muy malas si se tiene un mal algoritmo o un set de datos pequeño (es mejor usar AUC en estos casos). Si hay pocos ejemplos en la clase, evitar usar los maro promedios o 1vs1, 1 vs-n.\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "id": "H4d_U0RsUgRD"
+      }
+    }
+  ]
+}
